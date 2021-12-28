@@ -1,0 +1,68 @@
+a {
+    text-decoration: none;
+}
+.nav {
+    height: 50px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 1px solid whitesmoke;
+}
+
+.nav-pos {
+    position: fixed;
+    top: 0;
+}
+
+.navigation {
+    width: 60px;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navigation a {
+    width: 50px;
+    height: 50px;
+    background-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav .logo {
+    border-style: none;
+    display: inline-block;
+    float: left;
+    width: 40px;
+    height: 40px;
+}
+
+.navigation:last-child {
+    width: 80px;
+}
+
+.logout {
+    width: 100%;
+    height: 90%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logout a {
+    width: 60px;
+    height: 90%;
+    border: none;
+    background-color: deepskyblue;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: white;
+}
+
+.logout input[type="button"]:hover {
+    background-color: #007eab;
+}

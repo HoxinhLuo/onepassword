@@ -1,0 +1,141 @@
+<script>
+    const $setval = '#setval';
+    const $refresh_generator = "#refresh_generator";
+    const $numbers = '#numbers';
+    const $symbols = '#symbols';
+    const $passwordrange = '#passwordrange';
+    const $display = '#display';
+    const $copy = '#copy-secure-password';
+    const $popupmsg = '#popupmsg';
+    const $select = '#randompassword';
+    const $typecontrol = '#typecontrol';
+    const $selectopt = '#randompassword option:selected';
+
+    const optinputrange = {
+        'characters': [8, 100, 8],
+        'memorable': [3, 15, 3],
+        'pin': [3, 12, 4],
+    };
+
+    $(function () {
+        $($refresh_generator).hover(function () {
+            $(this).children('img').addClass("change").delay(1000).queue(function(){
+                $(this).removeClass("change").dequeue();
+            });
+        });
+
+        $($refresh_generator).click(function () {
+            togen();
+        });
+
+        $($passwordrange).change(function () {
+            setto($(this).val());
+            togen();
+        });
+
+        $($numbers).change(function () {
+            togen();
+        });
+
+        $($symbols).change(function () {
+            togen();
+        });
+
+        $($select).change(function () {
+            const opt = $(this).val();
+            if (opt === 'pin' || opt === 'memorable') {
+                $($typecontrol).fadeOut(0);
+            } else {
+                $($typecontrol).fadeIn(0);
+            }
+            const range = optinputrange[opt];
+            $($passwordrange).attr('min', range[0]);
+            $($passwordrange).attr('max', range[1]);
+            $($passwordrange).attr('value', range[2]);
+            setto(range[2]);
+            togen();
+        });
+
+        $($copy).click(function () {
+            let text = '';
+            const spans = $($display).children('span');
+            $.each(spans, function (_, v) {
+                text += $(v).text();
+            });
+            copy(text);
+            $($popupmsg).children('span').text('Copied!');
+            $($popupmsg).fadeIn().delay(500).fadeOut();
+        });
+    });
+
+    function setto(val) {
+        $($setval).empty().html(val);
+    }
+
+    function copy(text) {
+        let sampleTextarea = document.createElement("textarea");
+        document.body.appendChild(sampleTextarea);
+        sampleTextarea.value = text; //save main text in it
+        sampleTextarea.select(); //select textarea contenrs
+        document.execCommand("copy");
+        document.body.removeChild(sampleTextarea);
+    }
+
+    function togen() {
+        const p = getparams();
+        generaterandompassword(p);
+    }
+
+    function getparams() {
+        const is_numbers = getstatus($numbers);
+        const is_symbols = getstatus($symbols);
+        const length = $($setval).text();
+        const opt = $($selectopt).val();
+        return [is_numbers, is_symbols, length, opt];
+    }
+
+    function getstatus(_id) {
+        return $(_id).prop('checked');
+    }
+
+    function generaterandompassword(params) {
+        const data = {
+            'is_numbers': params[0],
+            'is_symbols': params[1],
+            'length': params[2],
+            'type': params[3],
+        };
+        const url = "{% url 'generaterandompassword' %}";
+        $.get({
+            url: url,
+            data: data,
+            success: function (res) {
+                let password = res['randompassword'];
+                $($display).empty();
+                if (params[3] === 'memorable') {
+                    password = password.split('-');
+
+                    for (let i = 0; i < password.length; i++) {
+                        if (i !== password.length - 1) {
+                            $($display).append(
+                                '<span>' + password[i] + '</span><span class="red">-</span>'
+                            );
+                        } else {
+                            $($display).append(
+                                '<span>' + password[i] + '</span>'
+                            );
+                        }
+                    }
+                } else {
+                    for (let i = 0; i < password.length; i++) {
+                        if ($.isNumeric(password[i])) {
+                            $($display).append('<span class="digit">' + password[i] + '</span>');
+                        } else {
+                            $($display).append('<span>' + password[i] + '</span>');
+                        }
+                    }
+                }
+            }
+        })
+    }
+</script>

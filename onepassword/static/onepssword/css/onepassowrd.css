@@ -1,0 +1,228 @@
+.content {
+    top: 50px;
+    height: calc(100% - 50px);
+}
+
+.section-item {
+    width: 100%;
+    display: flex;
+    align-items: center;            /*横向*/
+    justify-content: flex-start;    /*纵向*/
+    flex-direction: column;
+}
+
+.content-header {
+    height: auto;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.item {
+    min-width: 628px;
+    width: 50%;
+    min-height: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;        /*横向*/
+    justify-content: center;    /*纵向*/
+}
+
+.item-title {
+    height: 50px;
+}
+
+.item-title .red {
+    color: red;
+}
+
+.item-title .red a {
+    color: red;
+    text-decoration: none;
+}
+
+.item span {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 400;
+    font-size: 30px;
+    color: white;
+    font-family: Courier Prime Bits,monospace;
+}
+
+.item:last-child span {
+    font-size: 20px;
+}
+
+.content-body .display {
+    height: auto;
+    min-height: 50px !important;
+    border-radius: 6px;
+    color: #333;
+    font-family: Courier Prime Bits,monospace;
+    font-size: 1.625rem;
+    letter-spacing: .156rem;
+    line-height: 1.2;
+    word-break: break-all;
+    flex-wrap: wrap;
+    border: 1px solid #eee;
+}
+
+.display span {
+    font-family: Courier Prime Bits,monospace;
+    color: #eee;
+}
+
+.display .digit {
+    color: #0572ec;
+}
+
+.display .red {
+    color: red;
+}
+
+.content-body .generator {
+    margin-top: 10px;
+    align-items: center;        /*横向*/
+    justify-content: center;    /*纵向*/
+}
+
+.generator .select, .generator .copypassword {
+    width: 47.5%;
+    height: 100%;
+}
+
+.generator .refresh {
+    width: 5%;
+    height: 100%;
+}
+
+.select select {
+    text-rendering: auto;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    background-size: 1.563rem;
+    border: 2px solid hsla(0, 0%, 100%, .2);
+    border-radius: 30px;
+    color: #fff;
+    font-size: 1rem;
+    letter-spacing: -.01rem;
+    line-height: 1.5;
+    outline: none;
+    width: 100%;
+    height: 100%;
+}
+
+.select select option {
+    display: inline-flex;
+    width: 100%;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    color: #333333;
+}
+
+.u-px-6 {
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+.u-py-2 {
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+
+.refresh button {
+    width: 100%;
+    height: 100%;
+    line-height: 1;
+    background-color: transparent;
+    border-style: none;
+}
+
+.generator .copypassword button {
+    background-color: #0572ec;
+    border: 2px solid transparent;
+    border-radius: 60px;
+    color: #fff;
+    display: inline-block;
+    font-family: Averta OP Bold,sans-serif;
+    font-size: 1.125rem;
+    letter-spacing: -.01125rem;
+    line-height: 1.5;
+    width: 100%;
+    height: 100%;
+    padding: 8px 24px;
+    text-align: center;
+    text-decoration: none;
+    transition: background-color .2s ease-in-out;
+}
+
+.generator .copypassword button:hover {
+    background-color: #0458bb;
+}
+
+.controller {
+    background-color: #004887;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    margin-top: 15px;
+    height: 70px;
+}
+
+.control-item {
+    width: 33.3%;
+    height: 80%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.control-item p {
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+    margin-right: 8px;
+}
+.control-item p:last-child {
+    margin-left: 8px;
+}
+
+.control-item .control-type {
+    width: 50%;
+    height: 100%;
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: center;
+}
+
+.change {
+	-ms-transform: rotate(180deg); /* IE 9 */
+    -webkit-transform: rotate(180deg); /* Chrome, Safari, Opera */
+    transform: rotate(180deg);
+    transition-duration: 1s;
+}
+
+.popupmsg {
+    display: none;
+    background-color: #fff;
+    width: 100px;
+    height: 50px;
+    z-index: 999;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: green;
+}
+
+.popupmsg span {
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}

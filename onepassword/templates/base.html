@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{% load i18n static %}
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+
+        {% endblock %} | OnePassword
+    </title>
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    <link rel="icon" href="{% static 'onepssword/img/icon-v2.svg' %}">
+    <link rel="stylesheet" href="{% static 'onepssword/css/base.css' %}">
+    {% block extcss %}
+
+    {% endblock %}
+    <script src="{% static 'onepssword/js/jquery-3.6.0.min.js' %}"></script>
+</head>
+<body>
+    {% block nav %}
+
+    {% endblock %}
+    <div class="content">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    {% block script %}
+
+    {% endblock %}
+</body>
+</html>

@@ -1,0 +1,84 @@
+{% extends 'onepssword/site_base.html' %}
+{% load myfilter %}
+{% load i18n static %}
+
+{% block title %}
+    StrongerPassword
+{% endblock %}
+
+{% block extcss %}
+    <link rel="stylesheet" href="{% static 'onepssword/css/nav.css' %}">
+    <link rel="stylesheet" href="{% static 'onepssword/css/onepassowrd.css' %}">
+{% endblock %}
+
+{% block content %}
+    <section class="content-header section-item">
+        <div class="item item-title">
+            <span>Need a password? </span>
+        </div>
+        <div class="item item-title">
+            <span>Try the</span>
+            <span class="red">&nbsp;<a href="{% url 'index' %}">onePassword</a></span>
+        </div>
+        <div class="item item-title">
+            <span>Stronger Password Generator.</span>
+        </div>
+        <div class="item item-title">
+            <span>Generate secure, random passwords to stay safer.</span>
+        </div>
+    </section>
+    <section class="content-body section-item">
+        <div class="item display" id="display">
+            {% for ch in randompassword %}
+                {% if ch|isdigit %}
+                    <span class="digit">{{ ch }}</span>
+                {% else %}
+                    <span>{{ ch }}</span>
+                {% endif %}
+            {% endfor %}
+        </div>
+        <div class="item generator">
+            <div class="g-item select">
+                <label for="randompassword"></label>
+                <select name="randompassword" id="randompassword" class="u-py-2 u-px-6">
+                    <option value="characters">Random Password</option>
+                    <option value="memorable">Memorable Password</option>
+                    <option value="pin">PIN</option>
+                </select>
+            </div>
+            <div class="g-item refresh">
+                <button title="refresh password generator" id="refresh_generator">
+                    <img src="{% static 'onepssword/img/refresh.svg' %}" alt="">
+                </button>
+            </div>
+            <div class="g-item copypassword">
+                 <button id="copy-secure-password" class="cp-pass-sec">
+                    Copy Secure Password
+                </button>
+            </div>
+        </div>
+        <div class="item controller">
+            <div class="control-item leng-control">
+                <p>Length</p>
+                <label for="passwordrange"></label>
+                <input type="range" min="8" max="100" value="8" id="passwordrange">
+                <p id="setval">8</p>
+            </div>
+            <div class="control-item" id="typecontrol">
+                <div class="control-type">
+                    <label for="numbers">
+                        <input type="checkbox" id="numbers" value="numbers" checked>Numbers
+                    </label>
+                </div>
+                <div class="control-type">
+                    <label for="symbols">
+                        <input type="checkbox" id="symbols" value="symbols">Symbols
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="item popupmsg" id="popupmsg">
+            <span></span>
+        </div>
+    </section>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load i18n static %}
+
+{% block nav %}
+    <nav class="nav nav-pos blue-bar">
+        <div class="navigation">
+            <a href="{% url 'index' %}">
+                <img class="logo" src="{% static 'onepssword/img/logo-dark-bg.svg' %}" alt="">
+            </a>
+        </div>
+        <div class="navigation">
+            <div class="logout">
+                <a id="logout" href="{% url 'logout' %}" title="退出系统">退出</a>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block script %}
+    {% include 'onepssword/script.html' %}
+{% endblock %}
