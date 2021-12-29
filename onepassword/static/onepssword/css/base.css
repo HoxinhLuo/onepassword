@@ -20,6 +20,30 @@ body {
     flex-direction: column;
 }
 
+
+.popupmsg {
+    display: none;
+    background-color: #fff;
+    width: 100px;
+    height: 50px;
+    z-index: 999;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    color: green;
+    position: fixed;
+    top: calc(50% - 25px);
+    left: calc(50% - 50px);
+}
+
+.popupmsg span {
+    display: inline-flex;
+    width: 100%;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+}
+
 :root {
   --primary: #79aec8;
   --secondary: #417690;
